@@ -10,6 +10,18 @@ import UIKit
 
 class CheckListViewController: UITableViewController {
   
+  @IBAction func addItem(sender: AnyObject) {
+    let newRowIndex = items.count
+    let item = ChecklistItem()
+    item.text = "I'm a new row"
+    item.checked = false
+    items.append(item)
+    
+    let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
+    let indexPaths = [indexPath]
+    tableView.insertRowsAtIndexPaths(indexPaths,
+                                     withRowAnimation: .Automatic)
+  }
   var items: [ChecklistItem]
   
   required init?(coder aDecoder: NSCoder) {
