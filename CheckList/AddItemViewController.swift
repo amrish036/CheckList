@@ -9,17 +9,46 @@
 import Foundation
 import UIKit
 
+protocol AddItemViewControllerDelegate: class {
+  func addItemViewControllerDidCancel(controller: AddItemViewController)
+  func addItemViewController(controller: AddItemViewController,
+                             didFinishAddingItem item: ChecklistItem)
+  func addItemViewController(controller: AddItemViewController,
+                             didFinishEditingItem item: ChecklistItem)
+}
+
 class AddItemViewController: UITableViewController, UITextFieldDelegate{
 
   @IBOutlet weak var textField: UITextField!
   @IBOutlet weak var doneBarButton: UIBarButtonItem!
   
+  weak var delegate: AddItemViewControllerDelegate?
+  
+  var itemToEdit: ChecklistItem?
+  
   @IBAction func cancel() {
-    dismissViewControllerAnimated(true, completion: nil)
+    delegate?.addItemViewControllerDidCancel(self)
   }
   @IBAction func done() {
-    print(textField.text!)
-    dismissViewControllerAnimated(true, completion: nil)
+    if let item = itemToEdit {
+      item.text = textField.text!
+      delegate?.addItemViewController(self, didFinishEditingItem: item)
+    } else {
+      let item = ChecklistItem()
+      item.text = textField.text!
+      item.checked = false
+      delegate?.addItemViewController(self, didFinishAddingItem: item)
+    }
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    if let item = itemToEdit {
+      title = "Edit Item"
+      textField.text = item.text
+      doneBarButton.enabled = true
+    }
   }
   
   override func tableView(tableView: UITableView,
