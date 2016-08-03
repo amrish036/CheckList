@@ -27,6 +27,16 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
     dismissViewControllerAnimated(true, completion: nil)
   }
   
+  func addItemViewController(controller: AddItemViewController,
+                             didFinishEditingItem item: ChecklistItem) {
+    if let index = items.indexOf(item) {
+      let indexPath = NSIndexPath(forRow: index, inSection: 0)
+      if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+        configureTextForCell(cell, withChecklistItem: item)
+      }
+    }
+    dismissViewControllerAnimated(true, completion: nil)
+  }
  
   var items: [ChecklistItem]
   
@@ -130,6 +140,19 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
         as! AddItemViewController
       // 4
       controller.delegate = self
+    }
+    
+    else if segue.identifier == "EditItem"{
+      
+      let navigationController = segue.destinationViewController
+        as! UINavigationController
+      let controller = navigationController.topViewController
+        as! AddItemViewController
+      controller.delegate = self
+      if let indexPath = tableView.indexPathForCell(
+        sender as! UITableViewCell) {
+        controller.itemToEdit = items[indexPath.row]
+      }
     }
   }
   

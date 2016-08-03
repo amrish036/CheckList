@@ -36,7 +36,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="EEV-9u-lhB" kind="presentation" identifier="EditItem" id="j1O-9W-p1x"/>
+                                    <segue destination="EEV-9u-lhB" kind="presentation" identifier="EditItem" trigger="accessoryAction" id="Ziy-4E-Jhu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -154,6 +154,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="j1O-9W-p1x"/>
+        <segue reference="Ziy-4E-Jhu"/>
     </inferredMetricsTieBreakers>
 </document>
