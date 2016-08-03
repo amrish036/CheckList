@@ -12,6 +12,25 @@ import UIKit
 
 class CheckListViewController: UITableViewController, ItemDetailViewControllerDelegate {
   
+  
+  func saveChecklistItems() {
+    let data = NSMutableData()
+    let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
+    archiver.encodeObject(items, forKey: "ChecklistItems")
+    archiver.finishEncoding()
+    data.writeToFile(dataFilePath(), atomically: true)
+  }
+  
+  func documentsDirectory() -> String {
+    let paths = NSSearchPathForDirectoriesInDomains(
+      .DocumentDirectory, .UserDomainMask, true)
+    return paths[0]
+  }
+  func dataFilePath() -> String {
+    return (documentsDirectory() as NSString)
+      .stringByAppendingPathComponent("Checklist.plist")
+  }
+  
   func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
     dismissViewControllerAnimated(true, completion: nil)
   }
@@ -25,6 +44,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
     tableView.insertRowsAtIndexPaths(indexPaths,
                                      withRowAnimation: .Automatic)
     dismissViewControllerAnimated(true, completion: nil)
+    saveChecklistItems()
   }
   
   func itemDetailViewController(controller: ItemDetailViewController,
@@ -36,6 +56,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
       }
     }
     dismissViewControllerAnimated(true, completion: nil)
+    saveChecklistItems()
   }
  
   var items: [ChecklistItem]
@@ -64,6 +85,9 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
     row4item.checked = true
     items.append(row4item)
     super.init(coder: aDecoder)
+    
+    print("Documents folder is \(documentsDirectory())")
+    print("Data file path is \(dataFilePath())")
   }
 
   override func viewDidLoad() {
@@ -99,6 +123,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
       configureCheckmarkForCell(cell, withChecklistItem: item)
     }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    saveChecklistItems()
   }
   
   override func tableView(tableView: UITableView,
@@ -110,6 +135,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
     let indexPaths = [indexPath]
     tableView.deleteRowsAtIndexPaths(indexPaths,
                                      withRowAnimation: .Automatic)
+    saveChecklistItems()
   }
   
   func configureCheckmarkForCell(cell: UITableViewCell,
