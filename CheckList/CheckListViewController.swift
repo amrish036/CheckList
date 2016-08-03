@@ -10,12 +10,12 @@ import UIKit
 
 
 
-class CheckListViewController: UITableViewController, AddItemViewControllerDelegate {
+class CheckListViewController: UITableViewController, ItemDetailViewControllerDelegate {
   
-  func addItemViewControllerDidCancel(controller: AddItemViewController) {
+  func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
     dismissViewControllerAnimated(true, completion: nil)
   }
-  func addItemViewController(controller: AddItemViewController,
+  func itemDetailViewController(controller: ItemDetailViewController,
                              didFinishAddingItem item: ChecklistItem) {
     
     let newRowIndex = items.count
@@ -27,7 +27,7 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
     dismissViewControllerAnimated(true, completion: nil)
   }
   
-  func addItemViewController(controller: AddItemViewController,
+  func itemDetailViewController(controller: ItemDetailViewController,
                              didFinishEditingItem item: ChecklistItem) {
     if let index = items.indexOf(item) {
       let indexPath = NSIndexPath(forRow: index, inSection: 0)
@@ -116,7 +116,7 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
                                  withChecklistItem item: ChecklistItem) {
     let label = cell.viewWithTag(1001) as! UILabel
     if item.checked {
-      label.text = "√"
+      label.text = "✓"
     } else {
       label.text = ""
     }
@@ -137,7 +137,7 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
         as! UINavigationController
       // 3
       let controller = navigationController.topViewController
-        as! AddItemViewController
+        as! ItemDetailViewController
       // 4
       controller.delegate = self
     }
@@ -147,7 +147,7 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
       let navigationController = segue.destinationViewController
         as! UINavigationController
       let controller = navigationController.topViewController
-        as! AddItemViewController
+        as! ItemDetailViewController
       controller.delegate = self
       if let indexPath = tableView.indexPathForCell(
         sender as! UITableViewCell) {
