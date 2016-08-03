@@ -8,7 +8,17 @@
 
 import UIKit
 
-class CheckListViewController: UITableViewController {
+
+
+class CheckListViewController: UITableViewController, AddItemViewControllerDelegate {
+  
+  func addItemViewControllerDidCancel(controller: AddItemViewController) {
+    dismissViewControllerAnimated(true, completion: nil)
+  }
+  func addItemViewController(controller: AddItemViewController,
+                             didFinishAddingItem item: ChecklistItem) {
+    dismissViewControllerAnimated(true, completion: nil)
+  }
   
   @IBAction func addItem(sender: AnyObject) {
     let newRowIndex = items.count
@@ -109,5 +119,20 @@ class CheckListViewController: UITableViewController {
                             withChecklistItem item: ChecklistItem) {
     let label = cell.viewWithTag(1000) as! UILabel
     label.text = item.text
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue,
+                                sender: AnyObject?) {
+    // 1
+    if segue.identifier == "AddItem" {
+      // 2
+      let navigationController = segue.destinationViewController
+        as! UINavigationController
+      // 3
+      let controller = navigationController.topViewController
+        as! AddItemViewController
+      // 4
+      controller.delegate = self
+    }
   }
 }
