@@ -22,6 +22,8 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate{
   
   weak var delegate: AddItemViewControllerDelegate?
   
+  var itemToEdit: ChecklistItem?
+  
   @IBAction func cancel() {
     delegate?.addItemViewControllerDidCancel(self)
   }
@@ -31,6 +33,15 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate{
     item.checked = false
     
     delegate?.addItemViewController(self, didFinishAddingItem: item)
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    if let item = itemToEdit {
+      title = "Edit Item"
+      textField.text = item.text
+    }
   }
   
   override func tableView(tableView: UITableView,

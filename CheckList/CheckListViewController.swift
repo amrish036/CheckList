@@ -17,21 +17,17 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
   }
   func addItemViewController(controller: AddItemViewController,
                              didFinishAddingItem item: ChecklistItem) {
-    dismissViewControllerAnimated(true, completion: nil)
-  }
-  
-  @IBAction func addItem(sender: AnyObject) {
-    let newRowIndex = items.count
-    let item = ChecklistItem()
-    item.text = "I'm a new row"
-    item.checked = false
-    items.append(item)
     
+    let newRowIndex = items.count
+    items.append(item)
     let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
     let indexPaths = [indexPath]
     tableView.insertRowsAtIndexPaths(indexPaths,
                                      withRowAnimation: .Automatic)
+    dismissViewControllerAnimated(true, completion: nil)
   }
+  
+ 
   var items: [ChecklistItem]
   
   required init?(coder aDecoder: NSCoder) {
@@ -108,10 +104,11 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
   
   func configureCheckmarkForCell(cell: UITableViewCell,
                                  withChecklistItem item: ChecklistItem) {
+    let label = cell.viewWithTag(1001) as! UILabel
     if item.checked {
-      cell.accessoryType = .Checkmark
+      label.text = "√"
     } else {
-      cell.accessoryType = .None
+      label.text = ""
     }
   }
   
@@ -135,4 +132,6 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
       controller.delegate = self
     }
   }
+  
+  
 }
