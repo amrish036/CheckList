@@ -175,12 +175,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjY-1b-FZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1139" y="1199"/>
+            <point key="canvasLocation" x="1139" y="1035"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BxT-p3-A0d">
             <objects>
-                <navigationController id="ifF-1R-yr3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ListDetailNavigationController" id="ifF-1R-yr3" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HDY-Sl-TUm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
