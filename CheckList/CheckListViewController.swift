@@ -12,6 +12,7 @@ import UIKit
 
 class CheckListViewController: UITableViewController, ItemDetailViewControllerDelegate {
   
+  var checklist: Checklist!
   
   func saveChecklistItems() {
     let data = NSMutableData()
@@ -85,6 +86,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    title = checklist.name
     // Do any additional setup after loading the view, typically from a nib.
   }
   
