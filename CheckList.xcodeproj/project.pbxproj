@@ -16,6 +16,7 @@
 		EE2789791D50848000E955A4 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2789781D50848000E955A4 /* ItemDetailViewController.swift */; };
 		EE27897D1D58623900E955A4 /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27897C1D58623900E955A4 /* AllListViewController.swift */; };
 		EE27897F1D586C0B00E955A4 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27897E1D586C0B00E955A4 /* Checklist.swift */; };
+		EE2789811D59BA6800E955A4 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2789801D59BA6800E955A4 /* ListDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		EE2789781D50848000E955A4 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ItemDetailViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EE27897C1D58623900E955A4 /* AllListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
 		EE27897E1D586C0B00E955A4 /* Checklist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		EE2789801D59BA6800E955A4 /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				EE2789781D50848000E955A4 /* ItemDetailViewController.swift */,
 				EE27897C1D58623900E955A4 /* AllListViewController.swift */,
 				EE27897E1D586C0B00E955A4 /* Checklist.swift */,
+				EE2789801D59BA6800E955A4 /* ListDetailViewController.swift */,
 			);
 			path = CheckList;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE2789671D4F528000E955A4 /* CheckListViewController.swift in Sources */,
+				EE2789811D59BA6800E955A4 /* ListDetailViewController.swift in Sources */,
 				EE2789791D50848000E955A4 /* ItemDetailViewController.swift in Sources */,
 				EE27897F1D586C0B00E955A4 /* Checklist.swift in Sources */,
 				EE27897D1D58623900E955A4 /* AllListViewController.swift in Sources */,
