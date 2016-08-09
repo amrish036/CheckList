@@ -48,14 +48,17 @@ class AllListViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return lists.count
     }
 
   
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
    
     let cell = cellForTableView(tableView)
-    cell.textLabel!.text = "List \(indexPath.row)"
+   
+      let checklist = lists[indexPath.row]
+      cell.textLabel!.text = checklist.name
+      cell.accessoryType = .DetailDisclosureButton
 
         return cell
     }
@@ -74,7 +77,17 @@ class AllListViewController: UITableViewController {
   
   override func tableView(tableView: UITableView,
                           didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    performSegueWithIdentifier("ShowChecklist", sender: nil)
+    let checklist = lists[indexPath.row]
+    performSegueWithIdentifier("ShowChecklist", sender: checklist)
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue,
+                                sender: AnyObject?) {
+    if segue.identifier == "ShowChecklist" {
+      let controller = segue.destinationViewController
+        as! CheckListViewController
+      controller.checklist = sender as! Checklist
+    }
   }
 
   
