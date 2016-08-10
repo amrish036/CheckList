@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CheckList/Checklist.swift"
-            timestampString = "492440786.530518"
+            timestampString = "492523080.191075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32">
+            startingLineNumber = "45"
+            endingLineNumber = "45">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
