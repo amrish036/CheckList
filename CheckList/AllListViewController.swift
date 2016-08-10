@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class AllListViewController: UITableViewController, ListDetailViewControllerDelegate {
+class AllListViewController: UITableViewController, ListDetailViewControllerDelegate, UINavigationControllerDelegate {
   
  var dataModel: DataModel!
   
@@ -25,6 +25,16 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+  
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    navigationController?.delegate = self
+    let index = dataModel.indexOfSelectedChecklist
+    if index >= 0 && index < dataModel.lists.count {
+      let checklist = dataModel.lists[index]
+      performSegueWithIdentifier("ShowChecklist", sender: checklist)
+    }
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,6 +76,8 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
   
   override func tableView(tableView: UITableView,
                           didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    dataModel.indexOfSelectedChecklist = indexPath.row
+    
     let checklist = dataModel.lists[indexPath.row]
     performSegueWithIdentifier("ShowChecklist", sender: checklist)
   }
@@ -134,5 +146,13 @@ class AllListViewController: UITableViewController, ListDetailViewControllerDele
     presentViewController(navigationController, animated: true,
                           completion: nil)
   }
+  
+  func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+    if viewController === self {
+      dataModel.indexOfSelectedChecklist = -1
+    }
+  }
+  
+ 
   
 }
