@@ -17,6 +17,7 @@
 		EE27897D1D58623900E955A4 /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27897C1D58623900E955A4 /* AllListViewController.swift */; };
 		EE27897F1D586C0B00E955A4 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27897E1D586C0B00E955A4 /* Checklist.swift */; };
 		EE2789811D59BA6800E955A4 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2789801D59BA6800E955A4 /* ListDetailViewController.swift */; };
+		EE2789851D5A1A0A00E955A4 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2789841D5A1A0A00E955A4 /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EE27897C1D58623900E955A4 /* AllListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
 		EE27897E1D586C0B00E955A4 /* Checklist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		EE2789801D59BA6800E955A4 /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		EE2789841D5A1A0A00E955A4 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				EE2789641D4F528000E955A4 /* AppDelegate.swift */,
+				EE2789841D5A1A0A00E955A4 /* DataModel.swift */,
 				EE2789661D4F528000E955A4 /* CheckListViewController.swift */,
 				EE2789681D4F528000E955A4 /* Main.storyboard */,
 				EE27896B1D4F528000E955A4 /* Assets.xcassets */,
@@ -156,6 +159,7 @@
 				EE2789791D50848000E955A4 /* ItemDetailViewController.swift in Sources */,
 				EE27897F1D586C0B00E955A4 /* Checklist.swift in Sources */,
 				EE27897D1D58623900E955A4 /* AllListViewController.swift in Sources */,
+				EE2789851D5A1A0A00E955A4 /* DataModel.swift in Sources */,
 				EE2789771D50655700E955A4 /* ChecklistItem.swift in Sources */,
 				EE2789651D4F528000E955A4 /* AppDelegate.swift in Sources */,
 			);

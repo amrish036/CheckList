@@ -12,11 +12,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  let dataModel = DataModel()
 
-
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Override point for customization after application launch.
-    return true
+  func application(application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?)
+    -> Bool {
+      let navigationController = window!.rootViewController
+        as! UINavigationController
+      let controller = navigationController.viewControllers[0]
+        as! AllListViewController
+      controller.dataModel = dataModel
+      return true
   }
 
   func applicationWillResignActive(application: UIApplication) {
@@ -44,11 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func saveData() {
-    let navigationController = window!.rootViewController
-      as! UINavigationController
-    let controller = navigationController.viewControllers[0]
-      as! AllListViewController
-    controller.saveChecklists()
+    dataModel.saveChecklists()
   }
 
 }
