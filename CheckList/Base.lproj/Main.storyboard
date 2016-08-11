@@ -163,10 +163,18 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OKf-e6-rGz">
-                                                    <rect key="frame" x="534" y="3" width="36" height="36"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OKf-e6-rGz">
+                                                    <rect key="frame" x="528" y="3" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="gFG-0Q-XjK"/>
+                                                        <constraint firstAttribute="width" constant="36" id="jtO-rS-AtZ"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="OKf-e6-rGz" secondAttribute="trailing" constant="3" id="A9Z-LJ-V1j"/>
+                                                <constraint firstItem="OKf-e6-rGz" firstAttribute="top" secondItem="a15-o5-o2i" secondAttribute="top" constant="3" id="doi-1V-hWC"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="Y6t-cJ-q67" kind="show" id="PrL-bV-K6s"/>

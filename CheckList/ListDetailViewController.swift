@@ -16,8 +16,9 @@ protocol ListDetailViewControllerDelegate: class {
                                 didFinishEditingChecklist checklist: Checklist)
 }
 class ListDetailViewController: UITableViewController,
-UITextFieldDelegate {
+UITextFieldDelegate, IconPickerViewControllerDelegate {
   
+  var iconName = "Folder"
   
   @IBOutlet weak var textField: UITextField!
   @IBOutlet weak var doneBarButton: UIBarButtonItem!
@@ -33,10 +34,12 @@ UITextFieldDelegate {
   @IBAction func done() {
     if let checklist = checklistToEdit {
       checklist.name = textField.text!
+      checklist.iconName = iconName
+      
       delegate?.listDetailViewController(self,
                                          didFinishEditingChecklist: checklist)
     } else {
-      let checklist = Checklist(name: textField.text!)
+      let checklist = Checklist(name: textField.text!, iconName: iconName)
       delegate?.listDetailViewController(self,
                                          didFinishAddingChecklist: checklist)
     }
@@ -48,7 +51,10 @@ UITextFieldDelegate {
       title = "Edit Checklist"
       textField.text = checklist.name
       doneBarButton.enabled = true
+      
+      iconName = checklist.iconName
     }
+    iconImageView.image = UIImage(named: iconName)
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -75,6 +81,22 @@ UITextFieldDelegate {
       range, withString: string)
     doneBarButton.enabled = (newText.length > 0)
     return true
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue,
+                                sender: AnyObject?) {
+    if segue.identifier == "PickIcon" {
+      let controller = segue.destinationViewController
+        as! IconPickerViewController
+      controller.delegate = self
+    }
+  }
+  
+  func iconPicker(picker: IconPickerViewController,
+                  didPickIcon iconName: String) {
+    self.iconName = iconName
+    iconImageView.image = UIImage(named: iconName)
+    navigationController?.popViewControllerAnimated(true)
   }
 }
 
