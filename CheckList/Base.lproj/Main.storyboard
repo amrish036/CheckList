@@ -334,4 +334,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="Ziy-4E-Jhu"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
