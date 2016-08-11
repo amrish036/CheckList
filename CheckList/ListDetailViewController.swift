@@ -17,6 +17,8 @@ protocol ListDetailViewControllerDelegate: class {
 }
 class ListDetailViewController: UITableViewController,
 UITextFieldDelegate {
+  
+  
   @IBOutlet weak var textField: UITextField!
   @IBOutlet weak var doneBarButton: UIBarButtonItem!
   weak var delegate: ListDetailViewControllerDelegate?
@@ -25,6 +27,8 @@ UITextFieldDelegate {
   @IBAction func cancel() {
     delegate?.listDetailViewControllerDidCancel(self)
   }
+  
+  @IBOutlet weak var iconImageView: UIImageView!
   
   @IBAction func done() {
     if let checklist = checklistToEdit {
@@ -54,9 +58,15 @@ UITextFieldDelegate {
   
   override func tableView(tableView: UITableView,
                           willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-    return nil
+    if indexPath.section == 1 {
+      return indexPath
+    } else {
+      return nil
+    }
   }
   
+  
+
   func textField(textField: UITextField,
                  shouldChangeCharactersInRange range: NSRange,
                                                replacementString string: String) -> Bool {
